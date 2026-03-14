@@ -12,11 +12,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/godoes/gorm-dameng/dm8/util"
+	"github.com/ywhking/gorm-dameng/dm8/util"
 )
 
 const (
-	Dm_build_0 = "7.6.0.0"
+	// Dm_build_0 = "7.6.0.0"
+	Dm_build_0 = "8.1.4.80"
 
 	Dm_build_1 = "7.0.0.9"
 

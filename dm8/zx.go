@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godoes/gorm-dameng/dm8/util"
+	"github.com/ywhking/gorm-dameng/dm8/util"
 )
 
 const (
