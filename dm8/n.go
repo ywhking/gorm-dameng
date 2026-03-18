@@ -727,7 +727,7 @@ func (c *DmConnector) parseDSN(dsn string) (*Properties, string, error) {
 
 		for _, kvString := range strings.Split(queryString, "&") {
 			kv := strings.SplitN(kvString, "=", 2)
-			if kv != nil && len(kv) > 1 {
+			if len(kv) > 1 {
 				dsnProps.Set(kv[0], kv[1])
 			}
 		}
@@ -741,9 +741,14 @@ func (c *DmConnector) parseDSN(dsn string) (*Properties, string, error) {
 		var userString = urlString[:atIndex]
 		hostString = urlString[atIndex+1:]
 		kv := strings.SplitN(userString, ":", 2)
-		if kv != nil && len(kv) > 1 {
+		if len(kv) > 1 {
 			c.user = kv[0]
-			c.password = kv[1]
+			// c.password = kv[1]
+			    var err error
+			c.password, err = url.QueryUnescape(kv[1])  // ✅ 添加解码
+			if err != nil {
+				return nil, "", err
+			}
 		}
 	}
 	return dsnProps, hostString, nil
